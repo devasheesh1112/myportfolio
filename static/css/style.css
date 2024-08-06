@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left h1 {
+            color: white;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .nav-right ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-right ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .nav-right ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-right ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Image Slider Section */
+        #home {
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid black; /* Black border around the frame */
+            border-radius: 8px; /* Rounded corners for the frame */
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0; /* Prevent images from shrinking */
+        }
+
+        /* About Me Section */
+        section#about {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        section#about h2 {
+            border-bottom: 2px solid blue;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        section#about p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Achievements Section */
+        section#achievements {
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        section#achievements h2 {
+            border-bottom: 2px solid blue;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .achievement-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .achievement-block {
+            flex: 1;
+            max-width: 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-block h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .achievement-block p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        /* Contact Section */
+        section#contact {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        section#contact h2 {
+            border-bottom: 2px solid blue;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: darkblue;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <h1>Devasheesh Patidar</h1>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides">
+                <img src="images/image1.jpg" alt="Image 1">
+                <img src="images/image2.jpg" alt="Image 2">
+                <img src="images/image3.jpg" alt="Image 3">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hi, I am Devasheesh Patidar. My interests are software programming, AI, and using automation tools to simplify my life. 
+            I'm always open to hearing your stories and experiences. Feel free to contact me!
+        </p>
+    </section>
+
+    <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="achievement-container">
+            <div class="achievement-block">
+                <h3>Years of Experience</h3>
+                <p>5+ Years</p>
+            </div>
+            <div class="achievement-block">
+                <h3>Projects Completed</h3>
+                <p>50+ Projects</p>
+            </div>
+            <div class="achievement-block">
+                <h3>Happy Clients</h3>
+                <p>100+ Clients</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="submit_form.php" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Devasheesh Patidar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const slidesContainer = document.querySelector('.slides');
+        const imageFiles = ['image1.jpg', 'image2.jpg', 'image3.jpg']; // List of image filenames
+        const imageFolder = 'images'; // Folder where images are located
+
+        function loadImages() {
+            imageFiles.forEach(file => {
+                const img = document.createElement('img');
+                img.src = `${imageFolder}/${file}`;
+                img.alt = `Image ${file}`;
+                slidesContainer.appendChild(img);
+            });
+
+            slidesContainer.style.width = `${imageFiles.length * 100}%`;
+        }
+
+        const intervalTime = 3000; // Time in milliseconds
+        let slideIndex = 0;
+
+        function showSlide() {
+            slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+            slideIndex = (slideIndex + 1) % slidesContainer.children.length;
+        }
+
+        function setSlideInterval() {
+            setInterval(showSlide, intervalTime);
+        }
+
+        // Initialize the slider
+        loadImages();
+        setSlideInterval();
+    </script>
+</body>
+</html>
